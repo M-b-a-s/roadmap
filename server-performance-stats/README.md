@@ -37,3 +37,37 @@ Create a script that helps system administrators and DevOps engineers quickly un
 ```bash
 git clone https://github.com/M-b-a-s/server-performance-stats.git
 cd server-performance-stats
+```
+
+### 2. Make the script executable
+```bash
+chmod +x server-stats.sh
+```
+
+### 3. Run the script
+```bash
+./server-stats.sh
+```
+
+## How It Works
+The script leverages standard Linux utilities:
+- top / ps for process information
+- free for memory stats
+- df for disk usage
+- /proc/loadavg and uptime for load and system info
+- journalctl / lastb for security insights
+
+## Project Structure
+server-performance-stats/
+├── server-stats.sh          # Main script
+├── README.md                # This file
+└── LICENSE                  # (Optional)
+
+## Learning Outcomes
+By completing this project, you will gain practical experience with:
+
+- Linux performance monitoring tools
+- Bash scripting best practices
+- System administration fundamentals
+- Resource utilization analysis
+- Troubleshooting server performance issues
