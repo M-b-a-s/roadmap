@@ -71,3 +71,5 @@ By completing this project, you will gain practical experience with:
 - System administration fundamentals
 - Resource utilization analysis
 - Troubleshooting server performance issues
+
+[Project URL](https://roadmap.sh/projects/server-stats)
