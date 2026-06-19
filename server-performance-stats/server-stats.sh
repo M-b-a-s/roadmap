@@ -50,6 +50,7 @@ echo "CPU Usage"
 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1)
 echo "Total CPU Usage: $CPU_USAGE%"
+echo ""
 
 # ==================== MEMORY USAGE ====================
 echo "Memory Usage"
@@ -75,3 +76,14 @@ FREE_DISK=$(echo "$DISK_USAGE" | awk '{print $4}')
 # Calculate percentage
 USED_DISK_PERCENT=$(df -h --total | grep total | awk '{print $5}')
 echo "Total: $TOTAL_DISK | Used: $USED_DISK | Free: $FREE_DISK | Usage: $USED_DISK_PERCENT"
+echo ""
+
+# ==================== TOP 5 PROCESSES BY CPU ====================
+echo "Top 5 Processes by CPU Usage"
+ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 6
+echo ""
+
+# ==================== TOP 5 PROCESSES BY MEMORY ====================
+echo "Top 5 Processes by Memory Usage"
+ps -eo pid,user,%cpu,%mem,comm --sort=-%mem | head -n 6
+echo ""
