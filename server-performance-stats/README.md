@@ -35,7 +35,7 @@ Create a script that helps system administrators and DevOps engineers quickly un
 ### 1. Clone or Download
 
 ```bash
-git clone https://github.com/M-b-a-s/server-performance-stats.git
+git clone https://github.com/M-b-a-s/roadmap
 cd server-performance-stats
 ```
 
