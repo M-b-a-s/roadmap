@@ -12,8 +12,16 @@
 # Source: roadmap.sh
 # ###################
 
+# ==================================================
+#     SERVER PERFORMANCE STATISTICS
+# ==================================================
 
+echo "=================================================="
+echo "     SERVER PERFORMANCE STATISTICS"
+echo "=================================================="
+echo ""
 
+# ==================== SYSTEM INFORMATION ====================
 echo "System Information"
 
 # 1. OS Version
@@ -37,11 +45,13 @@ echo "Load Average: $LOAD_AVG"
 LOGGED_IN_USERS=$(who | wc -l)
 echo "Logged in Users: $LOGGED_IN_USERS"    
 
+# ==================== CPU USAGE ====================
 echo "CPU Usage"
 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1)
 echo "Total CPU Usage: $CPU_USAGE%"
 
+# ==================== MEMORY USAGE ====================
 echo "Memory Usage"
 MEM_INFO=$(free -h | grep Mem)
 TOTAL_MEM=$(echo "$MEM_INFO" | awk '{print $2}')
@@ -55,3 +65,13 @@ USED_PERCENT=$(free | grep Mem | awk '{printf "%.0f", $3/$2 * 100.0}')
 echo "Total: $TOTAL_MEM | Used: $USED_MEM | Free: $FREE_MEM | Buff/Cache: $BUFF_CACHE"
 echo "Usage: ${USED_PERCENT}%"
 echo ""
+
+# ==================== DISK USAGE ====================
+echo "Disk Usage"
+DISK_USAGE=$(df -h --total | grep total)
+TOTAL_DISK=$(echo "$DISK_USAGE" | awk '{print $2}')
+USED_DISK=$(echo "$DISK_USAGE" | awk '{print $3}')
+FREE_DISK=$(echo "$DISK_USAGE" | awk '{print $4}')
+# Calculate percentage
+USED_DISK_PERCENT=$(df -h --total | grep total | awk '{print $5}')
+echo "Total: $TOTAL_DISK | Used: $USED_DISK | Free: $FREE_DISK | Usage: $USED_DISK_PERCENT"
