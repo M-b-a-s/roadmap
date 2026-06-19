@@ -87,3 +87,7 @@ echo ""
 echo "Top 5 Processes by Memory Usage"
 ps -eo pid,user,%cpu,%mem,comm --sort=-%mem | head -n 6
 echo ""
+
+echo ""
+echo "=================================================="
+echo "Script completed at $(date)"
