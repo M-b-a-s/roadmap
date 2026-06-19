@@ -3,11 +3,13 @@
 # ###################
 # 
 # Author: M-b-a-s
-#
+# Role: DevOps Engineer
+# 
 # Title: Server Performance Stats
 # Date: June 19, 2026
 #
 #
+# Source: roadmap.sh
 # ###################
 
 
@@ -39,3 +41,17 @@ echo "CPU Usage"
 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1)
 echo "Total CPU Usage: $CPU_USAGE%"
+
+echo "Memory Usage"
+MEM_INFO=$(free -h | grep Mem)
+TOTAL_MEM=$(echo "$MEM_INFO" | awk '{print $2}')
+USED_MEM=$(echo "$MEM_INFO" | awk '{print $3}')
+FREE_MEM=$(echo "$MEM_INFO" | awk '{print $4}')
+BUFF_CACHE=$(echo "$MEM_INFO" | awk '{print $6}')
+
+# Calculate percentage
+USED_PERCENT=$(free | grep Mem | awk '{printf "%.0f", $3/$2 * 100.0}')
+
+echo "Total: $TOTAL_MEM | Used: $USED_MEM | Free: $FREE_MEM | Buff/Cache: $BUFF_CACHE"
+echo "Usage: ${USED_PERCENT}%"
+echo ""
